@@ -201,23 +201,20 @@ function gPopulatePeopleSection(findReporter,findUser,findIssue,user,issues){
             document.getElementById("full-name").innerHTML = `
             <i class="fas fa-check-double"></i> ${assignedUser}
             `;
-            this.removeEventListener('click',arguments.callee,false);
         }else if(e.target.id === "stop-watch"){
                 document.getElementById("stop-watch").id = "start-watch";
                 document.getElementById("start-watch").textContent = "Start watch this issue";
                 stopWatchingIssue(user,findIssue,issues);
                 console.log(e.target.id);
-                this.removeEventListener('click',arguments.callee,false);
         }else if(e.target.id === "start-watch"){
             document.getElementById("start-watch").id = "stop-watch";
             document.getElementById("stop-watch").textContent = "Stop watching this issue";
             startWatchIssue(user,findIssue,issues);
             console.log(e.target.id);
-            this.removeEventListener('click',arguments.callee,false);
         }
 
         loadingMenus();
-        this.addEventListener("click",arguments.callee,true)
+
     });
 };
 //#endregion
