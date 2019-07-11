@@ -168,26 +168,22 @@ function gPopulatePeopleSection(findReporter,findUser,findIssue,user,issues){
         watched = "Stop watching this issue";
         watchedId = "stop-watch";
         populateAssigneAndWatchedTable(assignedUser,findReporter,assigne,watched,watchedId);
-        console.log(watch);
     }
     else if(watch === false && check === true){
         assigne = "";
         watched = "Start watch this issue";
         watchedId = "start-watch";
         populateAssigneAndWatchedTable(assignedUser,findReporter,assigne,watched,watchedId);
-        console.log(watch);
     }else if(watch === false && check === false){
         assigne = "Assigne to me";
         watched = "Start watch this issue";
         watchedId = "start-watch";
         populateAssigneAndWatchedTable(assignedUser,findReporter,assigne,watched,watchedId);
-        console.log(watch);
     }else{
         assigne = "Assigne to me";
         watched = "Stop watching this issue";
         watchedId = "stop-watch";
         populateAssigneAndWatchedTable(assignedUser,findReporter,assigne,watched,watchedId);
-        console.log(watch);
     }
    
     gInputs.gContainerTwo.addEventListener("click",function(e){
@@ -424,27 +420,7 @@ function gPopulateCommentArea(findIssue,findUser,issues){
             <p class="g-paragraph"><img src="${user.image}"/> <span class="g-comments-text"><span class="g-full-name">${user.firstName} ${user.lastName}:</span> ${gComment}</span></p>
             `
             findCommentator.push({userID: user.id,c: gComment});
-            let updateIssue = {
-                "affectedVersion": findIssue.affectedVersion,
-                "assignee": findIssue.assignee,
-                "comments": findCommentator,
-                "component": findIssue.component,
-                "createDate": findIssue.createDate,
-                "description": findIssue.description,
-                "dueDate": findIssue.dueDate,
-                "fixVersion": findIssue.fixVersion,
-                "id": findIssue.id,
-                "issue_type": findIssue.issue_type,
-                "organization": findIssue.organization,
-                "priority": findIssue.priority,
-                "project": findIssue.project,
-                "reporter": findIssue.reporter,
-                "status": findIssue.status,
-                "summary": findIssue.summary,
-                "watchers": findIssue.watchers
-            };
-            issues.splice(index,1,updateIssue);
-            localStorage.setItem("issues", JSON.stringify(issues));
+            updateIssue(findIssue,issues,index);
         }
         gTextBtn.value = "";
     });   
